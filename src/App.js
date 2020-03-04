@@ -70,23 +70,25 @@ function clickCallback() {
 function App() {
 	return (
 		<div className='App'>
-			<Router>
-				<Navigation clickCallback={clickCallback} />
-				<Switch>
-					<Route path='/collection'>
-						<Collection />
-					</Route>
-					<Route path='/people'>
-						<People />
-					</Route>
-					<Route path='/contact'>
-						<Contact />
-					</Route>
-					<Route path='/'>
-						<Hero />
-					</Route>
-				</Switch>
-			</Router>
+			<div className='container'>
+				<Router>
+					<Navigation clickCallback={clickCallback} />
+					<Switch>
+						<Route path='/collection'>
+							<Collection />
+						</Route>
+						<Route path='/people'>
+							<People />
+						</Route>
+						<Route path='/contact'>
+							<Contact />
+						</Route>
+						<Route path='/'>
+							<Hero />
+						</Route>
+					</Switch>
+				</Router>
+			</div>
 		</div>
 	);
 }
