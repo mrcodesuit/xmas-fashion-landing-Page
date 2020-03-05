@@ -1,23 +1,18 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
 
 import { DelayLink } from './DelayLink';
 
 const handleIsActive = e => {
-	e.preventDefault();
 	var currentActive = document.querySelector('.isActive');
 	var changeLink = e.target;
-	console.log(currentActive.textContent);
-	console.log(changeLink.textContent);
 
 	if (!(currentActive.textContent === changeLink.textContent)) {
-		console.log('ungleich');
 		currentActive.classList.remove('isActive');
 		changeLink.parentElement.classList.add('isActive');
 	}
 };
 
-const Navigation = ({ clickCallback }) => {
+const Navigation = ({ clickCallbackAnimation }) => {
 	const [isOpen, setIsOpen] = useState(false);
 
 	return (
@@ -31,7 +26,7 @@ const Navigation = ({ clickCallback }) => {
 					<li
 						className='isActive'
 						onClick={e => {
-							clickCallback();
+							clickCallbackAnimation();
 							setIsOpen(!isOpen);
 							handleIsActive(e);
 						}}
@@ -42,7 +37,7 @@ const Navigation = ({ clickCallback }) => {
 					</li>
 					<li
 						onClick={e => {
-							clickCallback();
+							clickCallbackAnimation();
 							setIsOpen(!isOpen);
 							handleIsActive(e);
 						}}
@@ -53,7 +48,7 @@ const Navigation = ({ clickCallback }) => {
 					</li>
 					<li
 						onClick={e => {
-							clickCallback();
+							clickCallbackAnimation();
 							setIsOpen(!isOpen);
 							handleIsActive(e);
 						}}
@@ -64,7 +59,7 @@ const Navigation = ({ clickCallback }) => {
 					</li>
 					<li
 						onClick={e => {
-							clickCallback();
+							clickCallbackAnimation();
 							setIsOpen(!isOpen);
 							handleIsActive(e);
 						}}

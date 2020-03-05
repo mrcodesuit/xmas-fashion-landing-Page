@@ -1,70 +1,27 @@
 import React from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
-import anime from 'animejs';
+
+import { homeAnimation } from './util/siteAnimations';
 
 import './App.scss';
 
-import Hero from './components/Hero';
+import Home from './pages/Home';
 import Collection from './pages/Collection';
 import People from './pages/People';
 import Contact from './pages/Contact';
-
 import Navigation from './components/Navigation';
 
-function clickCallback() {
-	console.log('foo');
+function clickCallbackAnimation() {
+	var currentActive = document.querySelector('.isActive');
 
-	var tl = anime.timeline({
-		easing: 'easeOutExpo',
-		duration: 750
-	});
-	tl.add({
-		targets: '.hero-right',
-		translateX: [0, '100%'],
-		opacity: [1, 0],
-		duration: 750,
-		easing: 'easeInOutQuad'
-	})
-		.add(
-			{
-				targets: '.newCollection',
-				translateX: [0, '100%'],
-				opacity: [1, 0],
-				duration: 750,
-				easing: 'easeInOutQuad'
-			},
-			'-=500'
-		)
-		.add(
-			{
-				targets: '.main-heading div',
-				translateX: [0, '-100%'],
-				opacity: [1, 0],
-				duration: 1000,
-				easing: 'easeInOutQuad'
-			},
-			'-=750'
-		)
-		.add(
-			{
-				targets: '.bag, .main-text',
-				translateY: [0, '-100%'],
-				opacity: [1, 0],
-				duration: 750,
-				easing: 'easeInOutQuad'
-			},
-			'-=500'
-		)
-		.add(
-			{
-				targets: '.pullover, .bigFW20, .loader',
-				translateY: [0, '100%'],
-				opacity: [1, 0],
-				duration: 750,
-				easing: 'easeInOutQuad'
-			},
-			'-=500'
-		);
+	switch (currentActive.textContent) {
+		case 'Home':
+			homeAnimation();
+			break;
+
+		default:
+			break;
+	}
 }
 
 function App() {
@@ -72,7 +29,7 @@ function App() {
 		<div className='App'>
 			<div className='container'>
 				<Router>
-					<Navigation clickCallback={clickCallback} />
+					<Navigation clickCallbackAnimation={clickCallbackAnimation} />
 					<Switch>
 						<Route path='/collection'>
 							<Collection />
@@ -84,7 +41,7 @@ function App() {
 							<Contact />
 						</Route>
 						<Route path='/'>
-							<Hero />
+							<Home />
 						</Route>
 					</Switch>
 				</Router>
